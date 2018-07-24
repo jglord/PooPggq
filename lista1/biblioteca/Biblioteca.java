@@ -1,6 +1,5 @@
-package segundaUnidade.PooPggq.lista1.biblioteca;
+package PooPggq.lista1.biblioteca;
 
-import java.nio.channels.NonWritableChannelException;
 import java.util.ArrayList;
 
 public class Biblioteca {
@@ -48,10 +47,16 @@ public class Biblioteca {
 	
 	public void showAcervo() {
 		for(int i = 0; i < acervo.size(); i++ ) {
-			System.out.println(acervo.get(i).getTitulo());
-			System.out.println(acervo.get(i).getAutor());
+			System.out.println((i+1) + "° livro: ");
+			System.out.println("Titulo: " + acervo.get(i).getTitulo());
+			System.out.println("Autor:  "+ acervo.get(i).getAutor());
 		}
 	
+	}
+	
+	public void cadastrarLivro(String titulo, String autor) {
+		Livro novoLivro = new Livro(titulo, autor);
+		this.setAcervo(novoLivro);
 	}
 }
 

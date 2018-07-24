@@ -1,4 +1,4 @@
-package segundaUnidade.PooPggq.lista1.biblioteca;
+package PooPggq.lista1.biblioteca;
 
 public class Livro {
 	private String titulo, autor, status;

@@ -1,18 +1,15 @@
-package segundaUnidade.PooPggq.lista1.biblioteca;
+package PooPggq.lista1.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
-
-import com.sun.glass.ui.TouchInputSupport;
 
 public class Usuario {
 	private ArrayList<Livro> emprestados = new ArrayList<Livro>();
 	
 	
 	public static void main(String[] args) {
-		Biblioteca biblioteca = new Biblioteca("Orlando teixeira", "Campus Mossoró");
+		Biblioteca biblioteca = new Biblioteca("Orlando teixeira", "Campus Mossoró"); // Nome e local
 		Scanner in = new Scanner(System.in);
 		
 		int opcao;
@@ -21,18 +18,21 @@ public class Usuario {
 			System.out.println("Localizada em " + biblioteca.getLocal());
 			
 			mostraOpcoes();
-			
+
 			opcao = in.nextInt();
 			
 			switch (opcao) {
 			case 1:
 				biblioteca.showAcervo();
-								
+				
 				break;
+		
 			case 2:
 				break;
 			
 			case 3:
+				
+				in.nextLine();
 				String titulo, autor;
 				
 				System.out.println("Título do livro: ");
@@ -40,10 +40,15 @@ public class Usuario {
 				System.out.println("Autor do livro: ");
 				autor = in.nextLine();
 				
-				Livro novoLivro = new Livro(titulo, autor);
+				biblioteca.cadastrarLivro(titulo, autor);
 				
-				biblioteca.setAcervo(novoLivro);				
-				
+				break;
+			
+			case 4:
+				biblioteca.showAcervo();
+
+				break;
+
 			default:
 				break;
 			}

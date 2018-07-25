@@ -62,7 +62,7 @@ public class LibUser {
 					System.out.print("Escolha um livro para pegar emprestado: ");
 					int opcaoEmprestado = in.nextInt();
 					
-					biblioteca.emprestarLivro(biblioteca, user, opcaoEmprestado-1);
+					biblioteca.emprestarLivro( user, opcaoEmprestado-1);
 				}
 				else {
 					System.out.println("Acervo da biblioteca vazio, espere a biblioteca adicionar novos livros!");
@@ -82,11 +82,11 @@ public class LibUser {
 				
 				break;
 			
-			case 5:
+			case 5:		// Mostra livros emprestados ao usuario
 				user.mostrarEmprestados(user);
 				
 				break;
-
+			
 			default:
 				break;
 			}

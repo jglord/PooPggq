@@ -97,16 +97,16 @@ public class Biblioteca {
 	}
 	
 	// Metodo para pegar um livro emprestado e adicionar ele a lista de emprestados do usuario da biblioteca
-	public boolean emprestarLivro(Biblioteca biblioteca,LibUser user, int opcaoEmprestado) {
+	public boolean emprestarLivro(LibUser user, int opcaoEmprestado) {
 		
-		if( biblioteca.getAcervo().get(opcaoEmprestado).isStatus().equalsIgnoreCase("Disponivel") ) {
+		if( getAcervo().get(opcaoEmprestado).isStatus().equalsIgnoreCase("Disponivel") ) {
 			 
 			 //  Setando o livro para "emprestado" e depois adicionando o livro
 			 //  ao ArrayList dos livros emprestados do usuario.
 			
 			System.out.println("Livro emprestado com sucesso!");
-			biblioteca.getAcervo().get(opcaoEmprestado).setStatus("Emprestado");
-			user.getEmprestados().add( biblioteca.getAcervo().get(opcaoEmprestado) );
+			getAcervo().get(opcaoEmprestado).setStatus("Emprestado");
+			user.getEmprestados().add( getAcervo().get(opcaoEmprestado) );
 		}
 		else {
 			System.out.println("Livro solicitado indispon�vel para empr�stimo, escolha outra opera��o.");

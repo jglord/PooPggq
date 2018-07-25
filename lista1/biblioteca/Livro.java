@@ -1,7 +1,7 @@
 package PooPggq.lista1.biblioteca;
 
 public class Livro {
-	private String titulo, autor, status;
+	private String titulo, autor, status = "Disponivel";
 	private int quantPaginas;
 	
 	public Livro(String titulo, String autor) {
@@ -58,7 +58,7 @@ public class Livro {
 			this.status = status;
 		} 
 		else {
-			System.out.println("OpÃ§Ã£o invalida para o status do livro!");			
+			System.out.println("Opção invalida para o status do livro!");			
 		}
 	}		
 	

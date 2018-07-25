@@ -33,7 +33,7 @@ public class Biblioteca {
 	}
 	
 	public ArrayList<Livro> getAcervo() {
-		return getAcervo();
+		return acervo;
 	}
 	
 	public void setAcervo(Livro livro) {
@@ -47,9 +47,10 @@ public class Biblioteca {
 	
 	public void showAcervo() {
 		for(int i = 0; i < acervo.size(); i++ ) {
-			System.out.println((i+1) + "° livro: ");
+			System.out.println("\nLivro " + (i+1) + ": ");
 			System.out.println("Titulo: " + acervo.get(i).getTitulo());
 			System.out.println("Autor:  "+ acervo.get(i).getAutor());
+			System.out.println();
 		}
 	
 	}

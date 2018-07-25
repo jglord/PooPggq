@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Biblioteca {
 	private String nome, local;
+	// private LibUser user = new LibUser();
 	private ArrayList<Livro> acervo = new ArrayList<Livro>();
 	
 	
@@ -48,7 +49,7 @@ public class Biblioteca {
 	
 	public void showAcervo() {
 		for(int i = 0; i < acervo.size(); i++ ) {
-			System.out.println("\nLivro " + (i+1) + ": ");
+			System.out.println("\nLivro " + (i+1) + " - " + acervo.get(i).isStatus());
 			System.out.println("Titulo: " + acervo.get(i).getTitulo());
 			System.out.println("Autor:  "+ acervo.get(i).getAutor());
 			System.out.println();
@@ -60,6 +61,63 @@ public class Biblioteca {
 		Livro novoLivro = new Livro(titulo, autor, quantPaginas);
 		this.setAcervo(novoLivro);
 	}
+	
+	
+	public void mostraOpcoes() {
+		
+		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - ");
+		System.out.println("Fun��es do bibliotec�rio");
+		System.out.println("1 - Adicionar novo livro ao acervo.");
+		System.out.println("2 - Consultar acervo da biblioteca.");
+		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - ");
+		System.out.println("Fun��es do usuario");
+		System.out.println("3 - Pegar livro emprestado.");
+		System.out.println("4 - Devolver livro.");
+		System.out.println("5 - Consultar livros emprestados ao usuario.");
+		System.out.println("0 - Sair do programa.");
+		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - ");
+
+		
+	}
+	
+	// Metodo para devolver um livro que foi emprestado ao usuario da biblioteca
+	public boolean devolverLivro(LibUser user, int opcaoDevolver) {
+	
+		if( opcaoDevolver < user.getEmprestados().size() ){
+			user.getEmprestados().remove(opcaoDevolver);
+			System.out.println("Livro devolvido com sucesso!");
+		}
+		else {
+			System.out.println("Livro selecionado n�o existe nos emprestados de " + user.getNome() + "!!");
+			return false;
+		}
+		
+		return true;
+	
+	}
+	
+	// Metodo para pegar um livro emprestado e adicionar ele a lista de emprestados do usuario da biblioteca
+	public boolean emprestarLivro(Biblioteca biblioteca,LibUser user, int opcaoEmprestado) {
+		
+		if( biblioteca.getAcervo().get(opcaoEmprestado).isStatus().equalsIgnoreCase("Disponivel") ) {
+			 
+			 //  Setando o livro para "emprestado" e depois adicionando o livro
+			 //  ao ArrayList dos livros emprestados do usuario.
+			
+			System.out.println("Livro emprestado com sucesso!");
+			biblioteca.getAcervo().get(opcaoEmprestado).setStatus("Emprestado");
+			user.getEmprestados().add( biblioteca.getAcervo().get(opcaoEmprestado) );
+		}
+		else {
+			System.out.println("Livro solicitado indispon�vel para empr�stimo, escolha outra opera��o.");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	
 }
 
 

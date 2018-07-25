@@ -3,10 +3,6 @@ package PooPggq.lista1.biblioteca;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.imageio.event.IIOReadWarningListener;
-import javax.sound.midi.Soundbank;
-
-
 public class LibUser {
 	private String nome;
 	private ArrayList<Livro> emprestados = new ArrayList<Livro>();
@@ -96,6 +92,7 @@ public class LibUser {
 			
 			
 		} while (opcao != 0);
+		in.close();
 		System.out.println("Programa finalizado!!!");
 		
 	}	

@@ -5,8 +5,14 @@ public class Livro {
 	private int quantPaginas;
 	
 	public Livro(String titulo, String autor) {
-		this.titulo = titulo;
-		this.autor = autor;
+		setTitulo(titulo);
+		setAutor(autor);
+	}
+	
+	public Livro(String titulo, String autor, int quantPaginas) {
+		setTitulo(titulo);
+		setAutor(autor);
+		setQuantPaginas(quantPaginas);
 	}
 	
 	public String getTitulo() {
@@ -18,7 +24,7 @@ public class Livro {
 			this.titulo = titulo;
 		}
 		else {
-			System.out.println("Erro, t√≠tulo n√£o pode ser vazio!");
+			System.out.println("Erro, tÌtulo n„o pode ser vazio!");
 		}
 	}
 	
@@ -31,7 +37,7 @@ public class Livro {
 			this.autor = autor;
 		} 
 		else {
-			System.out.println("Erro, autor n√£o pode ser vazio!");
+			System.out.println("Erro, autor n„o pode ser vazio!");
 		}
 	}
 	
@@ -44,7 +50,7 @@ public class Livro {
 			this.quantPaginas = quantPaginas;
 		}
 		else {
-			System.out.println("Quantidade de paginas fora do padr√£o aceito nessa biblioteca.");
+			System.out.println("Quantidade de paginas fora do padr„o aceito nesta biblioteca.");
 		}
 			
 	}

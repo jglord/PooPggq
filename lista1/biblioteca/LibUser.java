@@ -36,13 +36,16 @@ public class LibUser {
 				
 				in.nextLine();
 				String titulo, autor;
+				int quantPaginas;
 				
 				System.out.print("Titulo do livro: ");
 				titulo = in.nextLine();
 				System.out.print("Autor do livro: ");
 				autor = in.nextLine();
+				System.out.print("Quantidade de páginas do livro:");
+				quantPaginas = in.nextInt();
 				
-				biblioteca.cadastrarLivro(titulo, autor);
+				biblioteca.cadastrarLivro(titulo, autor, quantPaginas);
 				
 				break;
 				

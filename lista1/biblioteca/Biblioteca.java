@@ -12,6 +12,7 @@ public class Biblioteca {
 		this.local = local;
 	}
 	
+		
 	public String getNome() {
 		return nome;
 	}
@@ -55,8 +56,8 @@ public class Biblioteca {
 	
 	}
 	
-	public void cadastrarLivro(String titulo, String autor) {
-		Livro novoLivro = new Livro(titulo, autor);
+	public void cadastrarLivro(String titulo, String autor,int quantPaginas) {
+		Livro novoLivro = new Livro(titulo, autor, quantPaginas);
 		this.setAcervo(novoLivro);
 	}
 }

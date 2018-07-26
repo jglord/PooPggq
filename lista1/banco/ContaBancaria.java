@@ -2,17 +2,19 @@ package PooPggq.lista1.banco;
 
 public class ContaBancaria {
 
-	private static int numeroConta = 0;
-	private float saldo;
-	private String nomeCliente;
+	protected static int numeroConta = 0;
+	protected double saldo;
+	protected String nomeCliente;
+	
 	
 	// Construtor
-	public ContaBancaria(String nomeCliente) {
+	public ContaBancaria(String nomeCliente, double saldo) {
 		this.setNomeCliente(nomeCliente);
+		this.setSaldo(saldo);
 		this.setNumeroConta();
 	}
 	
-	public int getNumeroConta() {
+	public static int getNumeroConta() {
 		return numeroConta;
 	}
 	
@@ -20,11 +22,11 @@ public class ContaBancaria {
 		numeroConta++;
 	}
 	
-	public float getSaldo() {
-		return saldo;
+	public double getSaldo() {
+		return this.saldo;
 	}
 	
-	public void setSaldo(float saldo) {
+	public void setSaldo(double saldo) {
 		if(saldo > 0) {
 			this.saldo = saldo;
 		}
@@ -34,7 +36,7 @@ public class ContaBancaria {
 	}
 	
 	public String getNomeCliente() {
-		return nomeCliente;
+		return this.nomeCliente;
 	}
 	
 	public void setNomeCliente(String nomeCliente) {
@@ -42,34 +44,38 @@ public class ContaBancaria {
 			this.nomeCliente = nomeCliente;
 		}
 		else {
-			System.out.println("Nomé inválido!");
+			System.out.println("Nome inválido!");
 		}
 	}
 	
-	public boolean sacar(float valor) {
+	public boolean sacar(double valorSaque) {
 		
-		if( valor < getSaldo() && valor > 0 ) {
+		if( valorSaque < getSaldo() && valorSaque > 0 ) {
 			System.out.println("Saque realizado com sucesso!");
 			
-			float novoSaldo = getSaldo() - valor;
-			setSaldo(novoSaldo);
+			this.setSaldo(this.getSaldo() - valorSaque);
+		}
+		else {
+			System.out.println("Não é possível sacar esse valor!");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean depositar(double valorDeposito) {
+		if( valorDeposito > 0 ) {
+			System.out.println("Deposito realizado com sucesso!");
+			this.setSaldo(this.getSaldo() + valorDeposito);			
+		}
+		else {
+			System.out.println("Valor inválido para depósito!");
 		}
 		
 		return true;
 	}
 	
 	
-	public static void main(String[] args) {
-		ContaBancaria conta1 = new ContaBancaria("Leyvino");
-		conta1.setSaldo(125000.0f);
-		
-		System.out.println("Saldo inicial de Leyvino: " + conta1.getSaldo());
-		
-		conta1.sacar(235.50f);
-		System.out.println("\nSacando 235.50 da conta..." );
-		System.out.println("Saldo final de Leyvino: " + conta1.getSaldo());	
-		
-	}
 	
 	
 	

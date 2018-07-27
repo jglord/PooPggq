@@ -31,7 +31,7 @@ public class ContaBancaria {
 			this.saldo = saldo;
 		}
 		else {
-			System.out.println("Saldo negativo nÃ£o existe");
+			System.out.println("Saldo negativo não é possível");
 		}
 	}
 	

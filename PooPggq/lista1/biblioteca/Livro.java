@@ -1,4 +1,4 @@
-package PooPggq.lista1.biblioteca;
+package UfersaCC.PooPggq.lista1.biblioteca;
 
 public class Livro {
 	private String titulo, autor, status = "Disponivel";
@@ -24,7 +24,7 @@ public class Livro {
 			this.titulo = titulo;
 		}
 		else {
-			System.out.println("Erro, título não pode ser vazio!");
+			System.out.println("Erro, tï¿½tulo nï¿½o pode ser vazio!");
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Livro {
 			this.autor = autor;
 		} 
 		else {
-			System.out.println("Erro, autor não pode ser vazio!");
+			System.out.println("Erro, autor nï¿½o pode ser vazio!");
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class Livro {
 			this.quantPaginas = quantPaginas;
 		}
 		else {
-			System.out.println("Quantidade de paginas fora do padrão aceito nesta biblioteca.");
+			System.out.println("Quantidade de paginas fora do padrï¿½o aceito nesta biblioteca.");
 		}
 			
 	}
@@ -64,7 +64,7 @@ public class Livro {
 			this.status = status;
 		} 
 		else {
-			System.out.println("Opção invalida para o status do livro!");			
+			System.out.println("Opï¿½ï¿½o invalida para o status do livro!");			
 		}
 	}		
 	

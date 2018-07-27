@@ -1,4 +1,4 @@
-package PooPggq.lista1.banco;
+package UfersaCC.PooPggq.lista1.banco;
 
 public class ContaPoupanca extends ContaBancaria{
 	private int diaDeRendimento;

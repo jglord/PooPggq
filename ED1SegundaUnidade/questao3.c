@@ -2,204 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct sLista{
-    int id;        // ID
-	char nome[30]; //Nome
-	float valor;   //Valor   	
-	struct sLista* pProx;    
-} tLista;
+typedef struct sDados {
+    char nome[50];
+    float valor;
+} tDados;
 
+typedef struct sElemento {
+    int id;
+    tDados dados;
+    struct sElemento* proxElemento;
+} tElemento;
 
-
-tLista* inicializarListaComCabeca(); 
-void inserirInicio(tLista* pInicio, char* nome, float* valor); 
-int percorrer(tLista* pInicio); 
-void inserirFim(tLista* pInicio, char* nome, float* valor);
-void inserirDepoisDe(tLista* pInicio, char* nome, float* valor, int id); 
-tLista* remover(tLista* pInicio, int id); 
-tLista* buscar(tLista* pInicio, int id); 
-
-
-tLista* inicializarListaComCabeca() {
-    tLista* p = (tLista*) calloc( 1, sizeof(tLista) );
-	strcpy(p->nome, "");
-	p->id = 1;
-    p->pProx = NULL;
-
-    return p;
-}
-
-void inserirInicio(tLista* pInicio, char* nome, float* valor){
-
-	tLista* pNovo = (tLista*) calloc( 1, sizeof(tLista) );
-	// Inicializa campos do elemento
-	strcpy(pNovo->nome, nome);
-    pNovo->valor = *valor;
-	pNovo->id = pInicio->id;
-	pNovo->pProx = NULL; 
-  	
-    pInicio->id = pInicio->id + 1;  
-
-	pNovo->pProx = pInicio->pProx;
-	pInicio->pProx = pNovo;
-}
-
-tLista* buscar(tLista* pInicio, int id){
-
-    tLista* p = pInicio->pProx; 	
-
-    while (p != NULL){ 
-        if (p->id == id) {
-           return p;
-        }
-
-        p = p->pProx; 
-    }
-    
-    return NULL;
-}
-
-int percorrer(tLista* pInicio)
-{
-	
-	int i = 0;						
-   	tLista* p = pInicio->pProx; 	
-
-	
-	if(p == NULL) {
-		printf("OPS! LISTA VAZIA!!! \n");
-		return 0;
-	}
-
-	
-	while (p != NULL) 
-	{
-        i++;
-        printf("\n");
-        printf("i: %i\n", i);
-		printf("p: %i \n", p);
-        printf("ID: %i\n", p->id);
-        printf("Nome: %s\n", p->nome);
-        printf("Valor: %.1f\n", p->valor);
-        printf("pProx: %i\n", p->pProx);
-        printf("\n");
-        p = p->pProx;
-	}
-
-	printf("Quantidade de Elementos = %d \n", i);
-    return i; 
-}
-
-void inserirFim(tLista* pInicio, char* nome, float* valor)
-{
-	
-	tLista* pNovo = (tLista*) calloc(1, sizeof(tLista) );
-
-	strcpy(pNovo->nome, nome);
-	pNovo->valor = *valor;
-    pNovo->id = pInicio->id;
-    pNovo->pProx = NULL; 
-
-    pInicio->id = pInicio->id + 1; 
-
-    tLista* p = pInicio;
-
-    while (p->pProx != NULL) { 
-        p = p->pProx;
-    }
-   
-    p->pProx = pNovo;
-}
-
-
-void inserirDepoisDe(tLista* pInicio, char* nome, float* valor, int idCriterio)
-{
-    
-    tLista* p = buscar(pInicio, idCriterio);
-
-	if(p == NULL)  
-	{
-        printf("Posi��o n�o existente na lista!");
-	}
-	else
-	{
-       
-    	tLista* pNovo = (tLista*) calloc( 1, sizeof(tLista) );
-    
-    	strcpy(pNovo->nome, nome);
-    	pNovo->valor = *valor;
-        pNovo->id = pInicio->id;
-        pNovo->pProx = NULL;
-    
-        pInicio->id = pInicio->id + 1;
-
-    	pNovo->pProx = p->pProx;
-    	p->pProx = pNovo;
-	}
-}
-
-
-tLista* buscarAnterior(tLista* pInicio, int id)
-{
-	
-    tLista* p 	  = pInicio; 	
-	tLista* result = NULL;
-
-	if(pInicio->pProx == NULL) 	// Verifica se lista � vazia
-	{
-		result = NULL;
-	}	
-	else
-	{
-        result = pInicio;
-
-		while (p != NULL)
-    	{
-	        if (p->id == id) {
-	           return result;
-	        }
-
-			result = p;		// Armazena o ponteiro anterior
-        	p = p->pProx;
-    	}
-	}
-
-    return NULL;
-}
-
-
-tLista* remover(tLista* pInicio, int id)
-{
-	// Inicializa��es
-    tLista* anterior = buscarAnterior(pInicio, id);
-  	tLista* p = NULL;
-    
-    if(anterior == NULL)
-    {
-    	printf("anterior NULL. Nao existe elemento com esse id \n");
-    	return NULL;
-    }
-    else
-    {
-    	p = anterior->pProx;
-    	
-        anterior->pProx = p->pProx;
-        p->pProx = NULL;
-    }
-	
-	return p;
-}
-
-
+tElemento* inicializarListaComCabeca();
+void inserirElementoInicio(tElemento* cabeca, tDados dados);
+void inserirElementoFim(tElemento* cabeca, tDados dados);
+int percorrerLista(tElemento* cabeca);      // Percorre a lista, exibe os itens e retorna a quantidade;
+tElemento* buscar(tElemento* cabeca,int id);
+tElemento* buscarAnterior(tElemento* pInicio, int id);
+void inserirDepoisDe(tElemento* cabeca, tDados dados, int id);
+tElemento* remover(tElemento* cabeca, int id); 
 
 int main()
 {
 	int opcao, id;
-	char nome[30];
-	float valor;
+	tDados dados;
 	
     // Primeiro elemento da lista (CABE�A)
-    tLista* pInicio = inicializarListaComCabeca();
+    tElemento* cabeca = inicializarListaComCabeca();
 
     do 
     {
@@ -221,23 +50,23 @@ int main()
         switch(opcao)
         {
             case 1: printf("PERCORRER \n");
-                    percorrer(pInicio);
+                    percorrerLista(cabeca);
                     break;
 
 			case 2: printf("PROXIMO ID (na cabeca) \n");
-                    printf("maior = %d \n", pInicio->id);
+                    printf("maior = %d \n", cabeca->id);
                     break;
                     
 			case 3: printf("BUSCAR NORMAL \n");
 					printf("Qual a chave? ");
                     scanf("%d", &id);
-                    tLista* result = NULL;
-                    result = buscar(pInicio, id);
-                    printf("result = %d \n", result);
+                    tElemento* result = NULL;
+                    result = buscar(cabeca, id);
+                    printf("result = %p \n", result);
                     if(result != NULL) {
 	        			printf("ID: %d\n", result->id);
-	        			printf("Nome: %s\n", result->nome);
-	        			printf("pProx: %d\n", result->pProx);
+	        			printf("Nome: %s\n", result->dados.nome);
+	        			printf("pProx: %p\n", result->proxElemento);
                     }
                     else {
 						printf("Nenhum elemento encontrado \n");
@@ -247,53 +76,54 @@ int main()
 			case 4: printf("BUSCAR ANTERIOR \n");
 					printf("Qual a chave? ");
                     scanf("%d", &id);
-                    tLista* resultAnterior = NULL;
-                    resultAnterior = buscarAnterior(pInicio, id);
-                    printf("resultAnterior = %d \n", resultAnterior);
+                    tElemento* resultAnterior = NULL;
+                    resultAnterior = buscarAnterior(cabeca, id);
+                    printf("resultAnterior = %p \n", resultAnterior);
                     if(result != NULL) {
 	        			printf("ID: %d\n", resultAnterior->id);
-	        			printf("Nome: %s\n", resultAnterior->nome);
-	        			printf("pProx: %d\n", resultAnterior->pProx);
+	        			printf("Nome: %s\n", resultAnterior->dados.nome);
+	        			printf("pProx: %p\n", resultAnterior->proxElemento);
                     }
                     else {
 						printf("Nenhum elemento encontrado \n");
                     }
                     break;
 
-            case 5: printf("INSERIR INICIO \n");
+            case 5: fflush(stdin);
+                    printf("INSERIR INICIO \n");
 					printf("Qual o nome do aluno e a media do aluno? ");
-                    scanf("%s", &nome);
-                    scanf("%f", &valor);
-                    inserirInicio(pInicio, nome, &valor);
+                    fgets(dados.nome, 50, stdin);
+                    scanf("%f", &dados.valor);
+                    inserirElementoInicio(cabeca,dados);
                     break;
 
-            case 6: printf("INSERIR FIM \n");
+            case 6: fflush(stdin);
+                    printf("INSERIR FIM \n");
 					printf("Qual o nome e a media do aluno? ");
-                    scanf("%s", &nome);
-                    scanf("%f", &valor);
-                    inserirFim(pInicio, nome, &valor);
+                    fgets(dados.nome, 50, stdin);
+                    scanf("%f", &dados.valor);
+                    inserirElementoFim(cabeca,dados);
                     break;
 
             case 7: printf("INSERIR DEPOIS DE... \n");
 					printf("Qual o nome e a media do aluno? ");
-                    scanf("%s", &nome);
-                    scanf("%f", &valor);
+                    fgets(dados.nome, 50, stdin);
+                    scanf("%f", &dados.valor);
                     printf("Inserir depois de qual chave? ");
                     scanf("%d", &id);
-                    inserirDepoisDe(pInicio, nome, &valor, id);
+                    inserirDepoisDe(cabeca,dados, id);
                     break;
 
             case 8: printf("REMOVER \n");
 					printf("Qual o ID? ");
                     scanf("%d", &id);
-                    tLista* resultRemove = NULL;
-                    resultRemove = remover(pInicio, id);
-                    printf("result = %d \n", result);
+                    tElemento* resultRemove = NULL;
+                    resultRemove = remover(cabeca, id);
+                    printf("result = %p \n", result);
                     if(resultRemove != NULL) {
 	        			printf("ID: %d\n", resultRemove->id);
-	        			printf("Nome: %s\n", resultRemove->nome);
-	        			printf("pProx: %d\n", resultRemove->pProx);
-                        free(resultRemove);
+	        			printf("Nome: %s\n", resultRemove->dados.nome);
+	        			printf("pProx: %p\n", resultRemove->proxElemento);
                     }
                     else {
 						printf("Nenhum elemento encontrado \n");
@@ -308,11 +138,162 @@ int main()
         }
         
         printf("\n\n");
-        system("pause"); 	// congela a tela para ver o resultado
-        system("cls");		// limpa tela
     }
     while(opcao != 0);
-
-    system("pause");
     return 0;
 }
+
+
+
+tElemento* inicializarListaComCabeca() {
+
+    tElemento* cabecaDaLista = (tElemento*) calloc(1, sizeof(tElemento));
+    cabecaDaLista->id = 1;
+
+    strcpy(cabecaDaLista->dados.nome, "");
+    cabecaDaLista->dados.valor = 0.0;
+    
+    cabecaDaLista->proxElemento = NULL;
+
+    return cabecaDaLista;
+}
+
+
+void inserirElementoInicio(tElemento* cabeca, tDados dados) {
+
+    tElemento* novoElemento = (tElemento*) calloc(1, sizeof(tElemento)); 
+
+    // Inserindo valores no novo elemento
+    strcpy(novoElemento->dados.nome, dados.nome);
+    novoElemento->dados.valor = dados.valor;
+    novoElemento->id = cabeca->id;
+
+    cabeca->id++;
+
+    // Anexando elementos
+    novoElemento->proxElemento = cabeca->proxElemento;
+    cabeca->proxElemento = novoElemento;
+}
+
+void inserirElementoFim(tElemento* cabeca, tDados dados) {
+
+    tElemento* novoElemento = (tElemento*) calloc(1, sizeof(tElemento));
+
+    strcpy(novoElemento->dados.nome, dados.nome);
+    novoElemento->dados.valor = dados.valor;
+    novoElemento->id = cabeca->id;
+
+    novoElemento->proxElemento = NULL;
+
+    cabeca->id++;
+
+    // P saltitante para achar o final da lista
+    tElemento* p = cabeca;
+
+    while(p->proxElemento != NULL) {
+        p = p->proxElemento;
+    }
+    
+    p->proxElemento = novoElemento;
+}
+
+int percorrerLista(tElemento* cabeca) {
+
+    int i = 0;
+    tElemento* p = cabeca->proxElemento;
+
+    while(p != NULL) {
+        i++;
+        printf("\n");
+        printf("i: %i\n", i);
+		printf("p: %p \n", p);
+        printf("ID: %i\n", p->id);
+        printf("Nome: %s\n", p->dados.nome);
+        printf("Valor: %.1f\n", p->dados.valor);
+        printf("pProx: %p\n", p->proxElemento);
+        printf("\n");
+        p = p->proxElemento;
+    }
+
+    printf("A lista tem %i elementos.", i);
+
+    return i;
+}
+
+tElemento* buscar(tElemento* cabeca,int id) {
+
+    tElemento* p = cabeca->proxElemento;
+
+    while(p != NULL) {
+
+        if(p->id == id) {
+            return p;
+        }
+        p = p->proxElemento;
+
+    }
+     return NULL;
+}
+
+tElemento* buscarAnterior(tElemento* cabeca, int id) {
+
+    tElemento* p = cabeca->proxElemento;
+    tElemento* result = NULL;
+
+    if(p == NULL) {
+        printf("Lista vazia!\n");
+    }
+    else { 
+        while(p != NULL) {
+
+            if(p->id == id) {
+                return result;
+            }
+
+            result = p; // Guarda o anterior
+            p = p->proxElemento;
+        }  
+    }
+    return NULL;
+
+}
+
+
+void inserirDepoisDe(tElemento* cabeca, tDados dados, int id) {
+
+    tElemento* p = buscar(cabeca, id);
+
+    if(p == NULL) {
+        printf("Elemento não existe!");
+    }
+    else {    
+        tElemento* novoElemento = (tElemento*) calloc(1, sizeof(tElemento));
+
+        strcpy(novoElemento->dados.nome, dados.nome);
+        novoElemento->dados.valor = dados.valor;
+        novoElemento->id = cabeca->id;
+
+        cabeca->id++;
+
+        // Anexando elementos
+        novoElemento->proxElemento = p->proxElemento;
+        p->proxElemento = novoElemento;
+    }
+}
+
+tElemento* remover(tElemento* cabeca, int id) {
+
+    tElemento* p = NULL;
+    tElemento* pAnterior = buscarAnterior(cabeca, id);
+
+    if(p == NULL) {
+        printf("Elemento nao existe na lista!");
+    }    
+    else {
+        p = pAnterior->proxElemento;
+        pAnterior->proxElemento = p->proxElemento;
+        p->proxElemento = NULL;
+    }
+    return p;
+}
+

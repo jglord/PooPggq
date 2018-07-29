@@ -1,4 +1,4 @@
-package UfersaCC.PooPggq.lista1.biblioteca;
+package PooPggq.lista1.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +10,10 @@ public class LibUser {
 	
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
+		 
+		int x = 5;
+		System.out.println(!x);
+		
 		
 		Biblioteca biblioteca = new Biblioteca("Orlando teixeira", "Campus Mossoró"); // Nome e local
 		

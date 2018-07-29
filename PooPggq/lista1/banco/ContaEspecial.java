@@ -18,7 +18,7 @@ public class ContaEspecial extends ContaBancaria{
 			this.limite = limite;
 		}
 		else {
-			System.out.println("Valor inválido para o limite da conta de");
+			System.out.println("Valor invï¿½lido para o limite da conta de");
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class ContaEspecial extends ContaBancaria{
 	
 	public boolean sacar(double valorSaque) {
 		
-		if( getSaldo() - valorSaque > getLimite() ) {
+		if(  ) {
 			
 		}
 		

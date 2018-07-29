@@ -2,7 +2,7 @@ package UfersaCC.PooPggq.lista1.banco;
 
 public class ContaBancaria {
 
-	protected static int numeroConta = 0;
+	protected int numeroConta = 0;
 	protected double saldo;
 	protected String nomeCliente;
 	
@@ -14,7 +14,7 @@ public class ContaBancaria {
 		this.setNumeroConta();
 	}
 	
-	public static int getNumeroConta() {
+	public int getNumeroConta() {
 		return numeroConta;
 	}
 	
@@ -31,7 +31,7 @@ public class ContaBancaria {
 			this.saldo = saldo;
 		}
 		else {
-			System.out.println("Saldo negativo não é possível");
+			System.out.println("Saldo negativo nï¿½o ï¿½ possï¿½vel");
 		}
 	}
 	

@@ -27,7 +27,7 @@ public class ContaBancaria {
 	}
 	
 	public void setSaldo(double saldo) {
-		if(saldo > 0) {
+		if(saldo >= 0) {
 			this.saldo = saldo;
 		}
 		else {
@@ -50,7 +50,7 @@ public class ContaBancaria {
 	
 	public boolean sacar(double valorSaque) {
 		
-		if( valorSaque < getSaldo() && valorSaque > 0 ) {
+		if( valorSaque <= getSaldo() && valorSaque >= 0 ) {
 			System.out.println("Saque realizado com sucesso!");
 			
 			this.setSaldo(this.getSaldo() - valorSaque);

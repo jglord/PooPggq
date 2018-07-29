@@ -6,7 +6,7 @@ public class ContaEspecial extends ContaBancaria{
 	
 	public ContaEspecial(String nomeCliente, double saldo, double limite) {
 		super(nomeCliente, saldo);
-		
+		setLimite(limite);
 	}
 
 	public double getLimite() {
@@ -22,17 +22,29 @@ public class ContaEspecial extends ContaBancaria{
 		}
 	}
 	
-	public void setSaldo() {
-		if(  )
+	public void setSaldo(double saldo) {
+		
+		if( saldo >= -limite ) {
+			this.saldo = saldo;
+		} 
+		else {
+			System.out.println("Limite ultrapassado!");
+		}	
 	}
 	
 	public boolean sacar(double valorSaque) {
 		
-		if(  ) {
+		double valorMaximoSaque = this.getSaldo() + this.limite;
+		
+		if( valorSaque <= valorMaximoSaque ) {
+			System.out.println("Saque realizado com sucesso!");
 			
+			setSaldo(this.getSaldo() - valorSaque);
+		}
+		else {
+			System.out.println("Não é possível sacar esse valor!");
 		}
 		
 		return true;
 	}
-	
 }

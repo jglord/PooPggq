@@ -1,4 +1,4 @@
-package PooPggq.lista1.biblioteca;
+package UfersaCC.PooPggq.lista1.biblioteca;
 
 public class Livro {
 	private String titulo, autor, status = "Disponivel";

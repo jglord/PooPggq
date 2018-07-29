@@ -49,6 +49,9 @@ public class ContaPoupanca extends ContaBancaria{
 	public boolean calcularNovoSaldoDia(int diaDeRendimento) {
 		
 		if( this.getDiaDeRendimento() == diaDeRendimento ) {
+			
+			System.out.println("Conta teve rendimento com sucesso!");
+			
 			double novoSaldo = getSaldo() + ( getSaldo() * getTaxaDeRendimento() );
 			setSaldo(novoSaldo);			
 			
@@ -59,30 +62,5 @@ public class ContaPoupanca extends ContaBancaria{
 			return false;
 		}
 	}
-
-	
-	public static void main(String[] args) {
-
-		ContaPoupanca conta1 = new ContaPoupanca("João", 1000, 25, 0.08);
-		
-		System.out.println("Saldo inicial de Leyvino: " + conta1.getSaldo());
-		
-		conta1.sacar(235.50);
-		System.out.println("\nSacando 235.50 da conta..." );
-		System.out.println("Saldo final de " + conta1.getNomeCliente() + " " + conta1.getSaldo());	
-		
-		conta1.depositar(5.5);
-		System.out.println("Saldo apos deposito " + conta1.getSaldo());	
-		
-		System.out.println("\n\nTestando calcularNovoSaldoDia com um dia errado(18)...");		
-		conta1.calcularNovoSaldoDia(18);
-		System.out.println("Saldo apos primeiro teste = " + conta1.getSaldo());
-		
-		System.out.println("\nAgora testando com o dia correto(25)");
-		conta1.calcularNovoSaldoDia(25);
-		System.out.println("Saldo apos segundo teste = " + conta1.getSaldo());
-		
-	}
-	
 	
 }

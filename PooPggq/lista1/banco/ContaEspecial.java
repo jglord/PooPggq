@@ -1,4 +1,4 @@
-package UfersaCC.PooPggq.lista1.banco;
+﻿package UfersaCC.PooPggq.lista1.banco;
 
 public class ContaEspecial extends ContaBancaria{
 
@@ -43,6 +43,7 @@ public class ContaEspecial extends ContaBancaria{
 		}
 		else {
 			System.out.println("Não é possível sacar esse valor!");
+			return false;
 		}
 		
 		return true;

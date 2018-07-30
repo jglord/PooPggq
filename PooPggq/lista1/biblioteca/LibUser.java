@@ -113,12 +113,9 @@ public class LibUser {
 		}
 	}
 	
-	
-
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		if(!nome.isEmpty()) {

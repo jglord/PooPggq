@@ -7,13 +7,11 @@ public class Biblioteca {
 	// private LibUser user = new LibUser();
 	private ArrayList<Livro> acervo = new ArrayList<Livro>();
 	
-	
 	public Biblioteca(String nome, String local) {
 		this.nome = nome;
 		this.local = local;
 	}
 	
-		
 	public String getNome() {
 		return nome;
 	}

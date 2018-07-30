@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-
 #define MAX 4
 
 typedef struct sDados {

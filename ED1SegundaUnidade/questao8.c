@@ -17,15 +17,17 @@ typedef struct sElemento {
 
 tElemento* inicializarCabeca();
 tElemento* criarNovo(tElemento* cabeca, tDados dados);
+
 void empilhar(tElemento* cabeca, tDados dados);
 tElemento* desempilhar(tElemento* cabeca);
+
 void exibirPilha(tElemento* cabeca);
 
 int main() {
 
 	tElemento* cabeca = inicializarCabeca();
 	tElemento* desempilhado;
-	tDados dados;
+    tDados dados;
 
     printf("Pilha sobre lista duplamente encadeada!\n");
 

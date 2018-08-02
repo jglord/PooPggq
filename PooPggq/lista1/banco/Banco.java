@@ -216,7 +216,7 @@ public class Banco {
 				System.out.println("Informe a data de hoje: ");
 				int diaDeRendimento = in.nextInt();
 				
-				conta.calcularNovoSaldoDia(diaDeRendimento);
+				conta.calcularNovoSaldo(diaDeRendimento);
 				
 				break;
 			

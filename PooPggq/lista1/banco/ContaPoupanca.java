@@ -38,15 +38,15 @@ public class ContaPoupanca extends ContaBancaria{
 	}
 	
 	
-	// Duas alternativas, perguntar qual a melhor ao monitor.
-	public double calcularNovoSaldo() {
-		
-		double novoSaldo = getSaldo() + ( getSaldo() * getTaxaDeRendimento() );
-		
-		return novoSaldo;
-	}
+//	// Duas alternativas, perguntar qual a melhor ao monitor.
+//	public double calcularNovoSaldo() {
+//		
+//		double novoSaldo = getSaldo() + ( getSaldo() * getTaxaDeRendimento() );
+//		
+//		return novoSaldo;
+//	}
 	
-	public boolean calcularNovoSaldoDia(int diaDeRendimento) {
+	public boolean calcularNovoSaldo(int diaDeRendimento) {
 		
 		if( this.getDiaDeRendimento() == diaDeRendimento ) {
 			

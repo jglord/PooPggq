@@ -25,14 +25,10 @@ int main() {
 		
 	}
 	
-	
 	printf("Vetor ordenado:    ");
 	for(i = 0; i < MAX; i++) {
 		printf(" [%i] ", array[i]);
 	} printf("\n");
-	
-	
-	
 	
 	return 0;
 }

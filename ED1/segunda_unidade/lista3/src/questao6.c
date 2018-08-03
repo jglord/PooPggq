@@ -12,8 +12,7 @@ int main() {
 		printf(" [%i] ", array[i]);
 	} printf("\n");
 	
-	for(i = 0; i < MAX; i++) {
-		
+	for(i = 0; i < MAX; i++) {	
 		for(j = 0; j < MAX-1; j++) {	
 			if( array[j] > array[j + 1] ){
 				aux = array[j];

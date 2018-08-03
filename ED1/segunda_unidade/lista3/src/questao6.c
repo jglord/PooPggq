@@ -20,8 +20,7 @@ int main() {
 				array[j + 1] = aux;				
 			}
 			
-		}
-		
+		}	
 	}
 	
 	printf("Vetor ordenado:    ");

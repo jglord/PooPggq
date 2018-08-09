@@ -17,7 +17,7 @@ typedef struct sElemento {
 
 
 tElemento* inicializarcabeca();
-tElemento* criarNovoElemento(char nome[]);
+tElemento* criarNovoElemento(tElemento* cabeca, char nome[]);
 
 void inserirElementoFim(tElemento* cabeca, char nome[]);
 void inserirElementoInicio(tElemento* cabeca, char nome[]);    
@@ -25,46 +25,51 @@ void inserirElementoInicio(tElemento* cabeca, char nome[]);
 tElemento* buscarAnterior(tElemento* cabeca, int id);
 tElemento* remover(tElemento* cabeca, int id);
 
+int buscaLinearDinamica(tElemento* cabeca, char entrada[]);
+
 
 int main() {
 
     tElemento* cabeca = inicializarcabeca();
     int i;
-    char nome[50];
+    char nome[50], buscado[50];
 
     for(i = 0; i < 5; i++) {
         printf("Digite um nome: ");
-        scanf("%s", &nome);
+        scanf("%s",&nome);
         inserirElementoFim(cabeca, nome);
     }
     
+    printf("\nQual nome deseja procurar na lista?");
+    scanf("%s", buscado);
 
+    int busca = buscaLinearDinamica(cabeca, buscado);
 
+    printf("\"%s\" foi encontrado na posição %i da lista.\n", buscado, busca);
     
     return 0;
 }
 
-bool buscaLinearDinamica(tElemento* cabeca, char entrada[]) {
+int buscaLinearDinamica(tElemento* cabeca, char entrada[]) {
 
+    int i = 0;
     tElemento* p = cabeca->proxElemento;
 
     if(p == NULL) {
         printf("Lista vazia,não tem o que buscar nela.");
-        return false;
+        return 0;
     }
     else {
-
         while( p->proxElemento != NULL ) {
 
-            if( !strcmp(p->nome, entrada) )
-
+            if( !strcmp(p->nome, entrada) ){
+                return i;
+            }
+            i++;
             p = p->proxElemento;
-        }
-
-
+        } 
     }
-
-
+    return 0;
 
 }
 

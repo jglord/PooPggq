@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/projeto_allegro.dir/imagens/imgsJonSnow/jon_snow_teste.c.o CMakeFiles/projeto_allegro.dir/src/funcoes/funcoes_basicas_init.c.o  -o projeto_allegro -lallegro_acodec -lallegro_audio -lallegro_color -lallegro_dialog -lallegro_image -lallegro_main -lallegro_memfile -lallegro_physfs -lallegro_primitives -lallegro_ttf -lallegro_font -lallegro 

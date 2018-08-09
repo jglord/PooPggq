@@ -8,7 +8,7 @@
 #include <allegro5/allegro_native_dialog.h>
 
 // Bibliotecas do projeto
-#include "funcoes/funcoes_basicas.h"
+#include "funcoes/funcoes_basicas_init.h"
 
 ALLEGRO_DISPLAY* window = NULL;
 ALLEGRO_EVENT_QUEUE* fila_eventos = NULL;
@@ -26,7 +26,7 @@ int main(void) {
     tSprite boneco;
 
     variaveisBoneco(&boneco);
-    if( !inicializar(&window, &timer, &fila_eventos, &folha_sprites, &fundo) ) {
+    if( !inicializarSprite(&window, &timer, &fila_eventos, &folha_sprites, &fundo) ) {
         return -1;
     };
     

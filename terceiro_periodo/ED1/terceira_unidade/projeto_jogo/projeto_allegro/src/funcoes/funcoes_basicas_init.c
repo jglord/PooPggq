@@ -3,7 +3,9 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 
-#include "funcoes_basicas.h"
+#include <string.h>
+
+#include "funcoes_basicas_init.h"
 
 // Macros
 
@@ -14,7 +16,7 @@ void error_msg(char* text, ALLEGRO_DISPLAY* window) {
         text, NULL, ALLEGRO_MESSAGEBOX_ERROR);
 }    
 
-bool inicializar(ALLEGRO_DISPLAY** window, 
+bool inicializarSprite(ALLEGRO_DISPLAY** window, 
                  ALLEGRO_TIMER** timer,
                  ALLEGRO_EVENT_QUEUE** fila_eventos,
                  ALLEGRO_BITMAP** folha_sprites,
@@ -84,4 +86,47 @@ bool inicializar(ALLEGRO_DISPLAY** window,
     al_start_timer(*timer);
 
     return true;
+}
+
+bool inicializarWindow(ALLEGRO_DISPLAY** window) {
+
+    if(!al_init()) {
+        error_msg("Erro ao inicializar a allegro5", *window);
+        return false;
+    }
+
+    if(!al_init_image_addon()) {
+        error_msg("Erro ao inicializar addon de image", *window);
+        return false;
+    }
+
+    *window = al_create_display(LARGURA_TELA, ALTURA_TELA);
+    if(!*window) {
+        error_msg("Falha ao inicializar window", *window);
+        return false;
+    }
+
+    
+
+    return true;
+}
+
+// Carrega imagem posicionada em algum ponto da tela
+bool carregarImgP(ALLEGRO_DISPLAY** window, ALLEGRO_BITMAP** img,char* file, float px, float py) {
+
+    // Carrega o bitmap em *img
+    *img = al_load_bitmap(file);
+    if(!*img) {
+        error_msg("Erro ao carregar a imagem!", *window);
+        al_destroy_display(*window);
+        return false;
+    }
+
+    al_convert_mask_to_alpha(*img, al_map_rgb(255, 0, 255));
+    
+    // Posiciona na tela no local esperado
+    al_draw_bitmap(*img, px, py, 0);
+
+    return true;
+
 }

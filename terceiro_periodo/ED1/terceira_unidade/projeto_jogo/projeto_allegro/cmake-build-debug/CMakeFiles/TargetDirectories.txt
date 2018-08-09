@@ -1,0 +1,4 @@
+/home/jglord/eclipse-workspace/UfersaEstudos/Ufersa/src/UfersaCC/terceiro_periodo/ED1/terceira_unidade/projeto_jogo/projeto_allegro/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jglord/eclipse-workspace/UfersaEstudos/Ufersa/src/UfersaCC/terceiro_periodo/ED1/terceira_unidade/projeto_jogo/projeto_allegro/cmake-build-debug/CMakeFiles/lallegro.dir
+/home/jglord/eclipse-workspace/UfersaEstudos/Ufersa/src/UfersaCC/terceiro_periodo/ED1/terceira_unidade/projeto_jogo/projeto_allegro/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jglord/eclipse-workspace/UfersaEstudos/Ufersa/src/UfersaCC/terceiro_periodo/ED1/terceira_unidade/projeto_jogo/projeto_allegro/cmake-build-debug/CMakeFiles/projeto_allegro.dir

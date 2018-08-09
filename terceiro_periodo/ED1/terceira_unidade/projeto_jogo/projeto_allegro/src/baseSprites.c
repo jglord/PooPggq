@@ -6,6 +6,7 @@
     #define LARGURA_TELA 800
     #define ALTURA_TELA 380
      
+    
     ALLEGRO_DISPLAY *janela = NULL;
     ALLEGRO_EVENT_QUEUE *fila_eventos = NULL;
     ALLEGRO_TIMER *timer = NULL;

@@ -4,8 +4,8 @@
 #include <allegro5/allegro_native_dialog.h>
 
 #define FPS 60.0
-#define LARGURA_TELA 800
-#define ALTURA_TELA 600
+#define LARGURA_TELA 1280
+#define ALTURA_TELA 960
 
 typedef struct sprite {
     //largura e altura de cada sprite dentro da folha
@@ -24,14 +24,21 @@ typedef struct sprite {
     int vel_x_sprite, vel_y_sprite;
 } tSprite;
 
+// Exibe uma mensagem de erro na tela e diz qual foi o problema
+void error_msg(char* text, ALLEGRO_DISPLAY* window);
 
 // Inicializa a aplicação
-bool inicializar(ALLEGRO_DISPLAY** window, 
+bool inicializarSprite(ALLEGRO_DISPLAY** window, 
                  ALLEGRO_TIMER** timer,
                  ALLEGRO_EVENT_QUEUE** fila_eventos,
                  ALLEGRO_BITMAP** folha_sprites,
                  ALLEGRO_BITMAP** fundo
                 );
 
-// Exibe uma mensagem de erro na tela e diz qual foi o problema
-void error_msg(char* text, ALLEGRO_DISPLAY* window);
+
+
+bool inicializarWindow(ALLEGRO_DISPLAY** window);
+
+bool carregarImgP(ALLEGRO_DISPLAY** window, ALLEGRO_BITMAP** img,char* file, float px, float py);
+
+char* catPath(char* path);

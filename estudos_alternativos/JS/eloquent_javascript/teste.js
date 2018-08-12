@@ -5,11 +5,6 @@ var number = 123;
 
 console.log(parseInt(number.toString().split('').reverse().join('')));
 
-
-
-
-
-
 var array = [
     { name: "Itagores Lira", mother: "Ionara", 
       sexo: "m",

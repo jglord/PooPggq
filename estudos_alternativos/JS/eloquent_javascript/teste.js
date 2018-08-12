@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 
 var number = 123;
@@ -78,6 +79,9 @@ var greaterThan10 = greaterThan(10);
 //console.log(greaterThan10(11));
 // → true
 
+=======
+console.log(countChar("kakkerlak","k"));
+>>>>>>> parent of c4df856... JsStudy
 
 
 function isEven(n) {

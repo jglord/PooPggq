@@ -13,8 +13,7 @@ delButton.addEventListener('click', () => {
 });*/
 
 function deleteUser(userKey) {
-
-    return firebase.database().ref().child(userKey).remove();
+    return firebase.database().ref().child(`users/${userKey}`).remove();
 }
 
 
@@ -58,20 +57,40 @@ function create(name, age) {
     usersList.appendChild(tr);
 */
 
-firebase.database().ref('users').on('value', (snapshot) => {
-    usersList.innerHTML = '';
-    let lista = [];
-    // Item vem do snapshot
+function listUsers() {
+    firebase.database().ref('users').on('value', (snapshot) => {
+        usersList.innerHTML = '';
+        let lista = [];
+        // Item vem do snapshot
+        
+        snapshot.forEach( (item) => {
+            const data = item.val();
+            const userId = item.key;
+            lista.push({userId, ...data});
     
-    snapshot.forEach( (item) => {
-        const data = item.val();
-        const userId = item.key;
-        lista.push({userId, ...data});
+            // lista
+            var li = document.createElement('li');
+            li.classList.add('list-group-item');
+            li.appendChild(document.createTextNode('Nome: ' +  item.val().name + '  |  Idade: ' + item.val().age));
+            
+            // delete button
+            let deleteButton = document.createElement('button');
+            deleteButton.appendChild(document.createTextNode('X'));
+            deleteButton.setAttribute("type","button");
+            deleteButton.classList = "btn btn-danger";
+            deleteButton.addEventListener('click', () => {
+                if (confirm(`deseja deletar ${item.val().name}`)) {
+                    alert(`Pessoa ${item.val().name}`);
+                    deleteUser(item.key);
+                    listUsers();
+                } else {
+                    alert('else')
+                }
+            });
+            li.appendChild(deleteButton);
 
-        var li = document.createElement('li');
-        li.classList.add('list-group-item');
-        li.appendChild(document.createTextNode('Nome: ' +  item.val().name + '  |  Idade: ' + item.val().age));
-        var a = document.createElement('a');
-        usersList.appendChild(li);
+            usersList.appendChild(li);
+        });
     });
-});
+}
+listUsers();

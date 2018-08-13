@@ -60,14 +60,18 @@ function create(name, age) {
 
 firebase.database().ref('users').on('value', (snapshot) => {
     usersList.innerHTML = '';
-    var i = 1;
+    let lista = [];
     // Item vem do snapshot
+    
     snapshot.forEach( (item) => {
+        const data = item.val();
+        const userId = item.key;
+        lista.push({userId, ...data});
+
         var li = document.createElement('li');
         li.classList.add('list-group-item');
-        li.appendChild(document.createTextNode(i + ' | Nome: ' +  item.val().name + '  |  Idade: ' + item.val().age));
+        li.appendChild(document.createTextNode('Nome: ' +  item.val().name + '  |  Idade: ' + item.val().age));
         var a = document.createElement('a');
         usersList.appendChild(li);
-        i++;
     });
-})
+});

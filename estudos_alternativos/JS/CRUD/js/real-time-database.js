@@ -2,19 +2,40 @@ var usersList = document.getElementById('usersList');
 var nameInput = document.getElementById('nameInput');
 var ageInput = document.getElementById('ageInput');
 var addButton = document.getElementById('addButton');
+//var delButton = document.getElementById('delButton');
 
 addButton.addEventListener('click', () => {
     create(nameInput.value, ageInput.value);
 });
+/*
+delButton.addEventListener('click', () => {
+    deleteUser(userKey);
+});*/
+
+function deleteUser(userKey) {
+
+    return firebase.database().ref().child(userKey).remove();
+}
+
 
 function create(name, age) {
+    var uid = firebase.database().ref().child('users').push().key;
+    
     var data = {
         name: name,
-        age: age
+        age: age,
+        userId: uid
     };
 
-    return firebase.database().ref().child('users').push(data);
+    var updates = {};
+    updates['/users/' + uid] = data;
+
+    return firebase.database().ref().update(updates);
+
 }
+
+
+
 
 /*
     <tr class="table-primary">
@@ -45,9 +66,8 @@ firebase.database().ref('users').on('value', (snapshot) => {
         var li = document.createElement('li');
         li.classList.add('list-group-item');
         li.appendChild(document.createTextNode(i + ' | Nome: ' +  item.val().name + '  |  Idade: ' + item.val().age));
+        var a = document.createElement('a');
         usersList.appendChild(li);
         i++;
-        console.log(li);
-
     });
 })

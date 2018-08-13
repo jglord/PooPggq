@@ -3,7 +3,7 @@
 }
 
 .divPrincipal {
-    margin-top: 15%;
+    margin-top: 20%;
     background-color: #2EAEE14D;
     height: 260px;
 }
@@ -14,4 +14,9 @@
 
 .botao {
     margin-left: 33%;
+}
+
+#usersList {
+    float: right;
+    margin-right: 20%;
 }

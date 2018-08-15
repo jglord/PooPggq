@@ -1,34 +1,35 @@
 package UfersaCC.terceiro_periodo.PooPggq.segunda_unidade.lista3.questao4pilha;
 
-public class Pilha {
-    private int topo = -1;
-    private int array[] = new int[3];
-    private final int TAM = 3;
+import java.util.ArrayList;
 
+public class Pilha <T> {
+	T objeto;
+    private int topo = -1;
+    private final int TAM = 3;
+    private ArrayList<T> pilha = new ArrayList<T>();
+    
     public static void main(String[] args) {
 
-        Pilha p = new Pilha();
+        Pilha<String> p = new Pilha<String>();
 
-        var i = 10.0;
+       // p.pop();
 
-        p.pop();
-
-        p.push(10);
-        p.push(35);
-        p.push(40);
-        p.push(22);
+        p.push("oi");
+        p.push("ola");
+        p.push("alo");
+        p.push("hey");
 
         System.out.println("Percorrendo antes de remover um elemento da pilha...");
         p.percorrer();
 
         p.pop();
-        System.out.println("\nApÃ³s remover um elemento...");
+        System.out.println("\nApós remover um elemento...");
         p.percorrer();
 
     }
 
 
-    public boolean push(int valor) {
+    public boolean push(T Objeto) {
         // Inserindo primeiro elemento na pilha
         if ( this.getTopo() == TAM-1) {
             System.out.println("ERRO! Pilha cheia.");
@@ -37,30 +38,40 @@ public class Pilha {
         else
         {
             this.setTopo('+'); // Incrementa o topo da pilha
-            this.array[this.getTopo()] = valor;
-
+            this.pilha.add(this.getTopo(), Objeto);
         }
         return true;
     }
 
-    public int pop() {
-        int retornado;
+    public T getObjeto() {
+		return objeto;
+	}
 
-        if(this.getTopo() == -1)
-        {
-            System.out.println("Pilha vazia, insira elementos");
-            return 0;
-        }
-        else {
-            retornado = this.array[ getTopo() ];
+
+	public void setObjeto(T objeto) {
+		this.objeto = objeto;
+	}
+
+
+	public T pop() {
+        T retornado;
+
+//        if(this.getTopo() == -1)
+//        {
+//            System.out.println("Pilha vazia, insira elementos");
+//            return ;
+//        }
+//        else
+//        {
+            retornado = this.pilha.get(this.getTopo());
             this.setTopo('-');
-        }
+//        }
         return retornado;
     }
 
     public void percorrer() {
         for (int i = 0; i <= this.getTopo(); i++) {
-            System.out.println("Posicao" + i + ": " + this.getArray()[i]);
+            System.out.println("Posicao" + i + ": " + this.getPilha().get(i));
         }
     }
 
@@ -78,15 +89,22 @@ public class Pilha {
         }
     }
 
-    public int[] getArray() {
-        return array;
-    }
+    public ArrayList<T> getPilha() {
+		return pilha;
+	}
 
-    public void setArray(int[] array) {
-        this.array = array;
-    }
 
-    public int getTAM() {
+	public void setPilha(ArrayList<T> pilha) {
+		this.pilha = pilha;
+	}
+
+
+	public void setTopo(int topo) {
+		this.topo = topo;
+	}
+
+
+	public int getTAM() {
         return TAM;
     }
 

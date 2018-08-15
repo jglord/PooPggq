@@ -1,4 +1,4 @@
-package UfersaCC.terceiro_periodo.PooPggq.segunda_unidade.lista3;
+package UfersaCC.terceiro_periodo.PooPggq.segunda_unidade.lista3.questao1;
 
 public class Produto {
     private String nomeLoja;

@@ -50,7 +50,7 @@ class Produto {
             this.preco = preco;
         }
         else {
-        	System.out.println("Preço negativo nao existe!");
+        	System.out.println("PreÃ§o negativo nao existe!");
         }
     }
 
